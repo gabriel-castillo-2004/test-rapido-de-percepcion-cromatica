@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="color-scheme" content="light only" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test rápido de daltonismo — Láminas pseudoisocromáticas</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div id="live-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+    <main id="app" class="app-shell">
+      <section id="view-welcome" class="card view-section" data-view="WELCOME" aria-labelledby="welcome-heading">
+        <header class="view-header">
+          <span class="badge badge-info">Evaluación orientativa · 10 láminas</span>
+          <h1 id="welcome-heading" tabindex="-1">Test rápido de percepción cromática</h1>
+          <p class="subtitle">
+            Prueba visual rápida basada en láminas pseudoisocromáticas estilo Ishihara para explorar la discriminación rojo-verde. No requiere registro ni conexión externa.
+          </p>
+        </header>
+
+        <div class="notice-box notice-warning" role="note">
+          <h2 class="notice-title">Prepara tu pantalla antes de empezar</h2>
+          <ul class="notice-list">
+            <li>Ajusta el <strong>brillo</strong> de tu pantalla a un nivel medio-alto y cómodo.</li>
+            <li>Desactiva temporalmente los <strong>filtros de luz azul</strong>, modo lectura o <em>Night Shift</em>.</li>
+            <li>Observa cada lámina de frente en un entorno con iluminación uniforme.</li>
+          </ul>
+        </div>
+
+        <div class="disclaimer-box" role="note">
+          <strong>Descargo de responsabilidad médica:</strong>
+          <span>
+            Esta herramienta es estrictamente orientativa y educativa; no constituye ni sustituye un diagnóstico clínico profesional. Consulta a un especialista en optometría u oftalmología ante cualquier duda.
+          </span>
+        </div>
+
+        <div class="actions-row">
+          <button type="button" id="start-btn" class="btn primary-btn">
+            Comenzar test
+          </button>
+        </div>
+      </section>
+
+      <section id="view-testing" class="card view-section" data-view="TESTING" aria-labelledby="testing-heading" hidden>
+        <header class="testing-header">
+          <div class="progress-meta">
+            <span id="progress-label" class="progress-label">Lámina 1 de 10</span>
+            <span id="calibration-badge" class="badge badge-neutral" hidden>Comprobación de control (CALIBRATION_CHECK)</span>
+          </div>
+          <div class="progress-track" role="progressbar" aria-valuemin="1" aria-valuemax="10" aria-valuenow="1" aria-label="Progreso del test">
+            <div id="progress-fill" class="progress-fill"></div>
+          </div>
+          <h1 id="testing-heading" tabindex="-1">¿Qué número ves en la lámina?</h1>
+          <p id="testing-hint" class="subtitle"></p>
+        </header>
+
+        <div class="testing-layout">
+          <div class="plate-stage">
+            <img
+              id="plate-image"
+              class="plate-image"
+              src="./assets/plates/plate-01-control.svg"
+              alt="Lámina pseudoisocromática de prueba"
+              width="400"
+              height="400"
+            />
+          </div>
+
+          <div class="controls-column">
+            <div id="options-container" class="options-grid" role="group" aria-labelledby="testing-heading"></div>
+            <div id="special-options-container" class="special-options" role="group" aria-label="Opciones alternativas"></div>
+            <div class="secondary-actions">
+              <button type="button" id="reset-btn" class="btn text-btn">Reiniciar desde el inicio</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="view-results" class="card view-section" data-view="RESULTS" aria-labelledby="results-heading" hidden>
+        <header class="view-header">
+          <span id="results-badge" class="badge badge-info">Resultado preliminar</span>
+          <h1 id="results-heading" tabindex="-1">Resumen de tu evaluación</h1>
+        </header>
+
+        <div id="results-card" class="results-card"></div>
+
+        <div class="disclaimer-box" role="note">
+          <strong>Descargo de responsabilidad médica:</strong>
+          <span id="results-disclaimer">
+            Este resultado es orientativo y no sustituye un diagnóstico clínico realizado por un profesional de la salud visual.
+          </span>
+        </div>
+
+        <div class="actions-row">
+          <button type="button" id="restart-btn" class="btn primary-btn">
+            Realizar el test de nuevo
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>

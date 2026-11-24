@@ -1,0 +1,13 @@
+{
+  "name": "agent-factory-static-web-template",
+  "version": "1.0.0",
+  "private": true,
+  "description": "100% static web application base template for Agent Factory (offline-ready, zero backend)",
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "test:unit": "node --test",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {}
+}
