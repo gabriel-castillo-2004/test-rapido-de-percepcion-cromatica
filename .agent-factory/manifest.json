@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0",
   "project_id": "pagina-responsiva",
-  "title": "Pagina responsiva",
+  "title": "Test rápido - De percepción cromática",
   "app_type": "static",
   "objective": "Crea una pagina responsiva para un test de daltonismo intuitiva y facil de hacer y que no sea tardada porfavor",
   "plan_summary": "Aplicación web estática responsiva en HTML5, CSS3 y Vanilla JavaScript para realizar un test rápido de daltonismo basado en láminas pseudoisocromáticas SVG (estilo Ishihara), con máquina de estados segura, compuerta de validación por placa de control, motor de puntuación puro e interfaz accesible en modo claro estricto.",
-  "repo_url": "https://github.com/gabriel-castillo-2004/pagina-responsiva",
-  "deploy_url": "https://gabriel-castillo-2004.github.io/pagina-responsiva",
-  "updated_at": "2026-11-24T01:17:20.587469+00:00"
+  "repo_url": "https://github.com/gabriel-castillo-2004/test-rapido-de-percepcion-cromatica",
+  "deploy_url": "https://gabriel-castillo-2004.github.io/test-rapido-de-percepcion-cromatica/",
+  "updated_at": "2026-11-25T02:02:10.961782+00:00"
 }
