@@ -191,6 +191,12 @@ h1:focus-visible {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: opacity 150ms ease-in-out;
+}
+
+.plate-stage.transitioning {
+  opacity: 0.65;
+  pointer-events: none;
 }
 
 .plate-image {

@@ -34,6 +34,7 @@ const dom = {
   progressFill: document.getElementById("progress-fill"),
   calibrationBadge: document.getElementById("calibration-badge"),
   testingHint: document.getElementById("testing-hint"),
+  plateStage: document.querySelector(".plate-stage"),
   plateImage: document.getElementById("plate-image"),
   optionsContainer: document.getElementById("options-container"),
   specialOptionsContainer: document.getElementById("special-options-container"),
@@ -142,6 +143,10 @@ function createOptionButton(label, value, className, currentAnswer) {
 }
 
 function renderCurrentPlate() {
+  if (dom.plateStage) {
+    dom.plateStage.classList.remove("transitioning");
+  }
+
   const plate = PLATES[state.currentIndex];
   if (!plate) return;
 
@@ -257,6 +262,9 @@ function handleAnswerSelection(answerValue) {
 
   state.isTransitioning = true;
   setOptionsDisabled(true);
+  if (dom.plateStage) {
+    dom.plateStage.classList.add("transitioning");
+  }
 
   const plateId = currentPlate.id;
   state.answersById[plateId] = answerValue;
@@ -266,6 +274,9 @@ function handleAnswerSelection(answerValue) {
     if (currentPlate.kind === "control") {
       const controlResult = evaluateTest([currentPlate], state.answersById);
       if (controlResult.status === "invalid_environment") {
+        if (dom.plateStage) {
+          dom.plateStage.classList.remove("transitioning");
+        }
         setActiveView(VIEWS.RESULTS);
         renderResults();
         state.isTransitioning = false;
@@ -280,6 +291,9 @@ function handleAnswerSelection(answerValue) {
       renderCurrentPlate();
       focusViewHeading(VIEWS.TESTING);
     } else {
+      if (dom.plateStage) {
+        dom.plateStage.classList.remove("transitioning");
+      }
       setActiveView(VIEWS.RESULTS);
       renderResults();
     }
@@ -299,6 +313,9 @@ function startTest() {
 
 function resetToWelcome() {
   if (state.isTransitioning) return;
+  if (!window.confirm("¿Seguro que deseas reiniciar la prueba? Se perderá el progreso acumulado.")) {
+    return;
+  }
   state.currentIndex = 0;
   state.answersById = {};
   setActiveView(VIEWS.WELCOME);
